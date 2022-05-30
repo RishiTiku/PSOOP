@@ -11,11 +11,11 @@ public class clock{
 	
 	public void conversion2(){
 	this.sec = this.hours*3600+this.min*60+this.sec;
-	this.hours = this.min = 0;}
+	this.hours = this.min = -1;}
 	
 	public String toString(){
 	String str1 = "", str2 = "", str3 = ""; 
-	if(hours == 0 && min == 0)
+	if(hours == -1 && min == -1)
 		return (""+sec);
 	if(hours<10)
 		str3 = "0";
