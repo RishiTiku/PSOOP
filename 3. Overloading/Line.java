@@ -1,23 +1,36 @@
+
 public class Line{
-	float m, c, y1, y2, x1, x2;
+	float m, c;
 	Line(float slope, float intercept){
 		m = slope; c = intercept;
-		System.out.println(" y = "+m+ "x"+" + "+c);
 	}
 	Line(float slope, float yone, float xone){
-		m = slope; y1 = yone; x1 = xone;
-		System.out.println(" y - "+y1+ " = "+m+"(x - "+x1+")");
+		m = slope;
+		c = yone - xone;
 	}
 	Line(float yone, float ytwo, float xone, float xtwo){
-		y1 = yone; y2 = ytwo; x1 = xone; x2 = xtwo;
-		System.out.println(" y - "+y1+ "\tx - "+x1);
-		System.out.println("  -----    =    ----- ");
-		System.out.println("   "+(y2-y1)+"\t\t "+(x2-x1));
+		m = (ytwo-yone)/(xtwo-xone);
+		c = ((ytwo-yone)*xone/(xtwo-xone))+yone;
+	}
+	public String toString()
+	{
+		String str = "+";
+		int a =1;
+		if(c<0)
+		{
+			str = "-";
+			a = -1;
+		}
+		return "y = "+m+"x "+str+" "+(a*c);
 	}
 	public static void main(String Args[])
 	{
-		Line ln1 = new Line(1,2,3,4);
-		Line ln2 = new Line(2,3,4);
-		Line l3 = new Line(2, 4);
+		Line ln1 = new Line(1,2);
+		Line ln2 = new Line(1,2,3);
+		Line ln3 = new Line(1,2, 3, 4);
+		
+		System.out.println(ln1);
+		System.out.println(ln2);
+		System.out.println(ln3);
 	}
 }
