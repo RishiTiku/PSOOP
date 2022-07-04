@@ -14,18 +14,18 @@ public class Tester {
         for(int i = 0; i<n; i++)
         {
             p[i] = new Person();
-            ob1[i] = new CashPayment();
-            ob2[i] = new CreditCardPayment();
             w[i] = new Westside();
             double pur = w[i].Purchase();
             System.out.println("(1)Cash or (2)Card?(1/2)");
             ch[i] = sc.nextInt();
             if(ch[i] == 1)
             {
+                ob1[i] = new CashPayment();
                 ob1[i].paymentDetails(pur);
             }
             else
             {
+                ob2[i] = new CreditCardPayment();
                 ob2[i].paymentDetails(pur);
             }
 

@@ -49,7 +49,6 @@ class Comps extends Course{
 class IT extends Course{
 	String student_name;
 	long UID;
-	int year;
 	IT()
 	{getStudentDetails();}
 	void getStudentDetails(){
@@ -97,6 +96,7 @@ public class Tester1{
 		{
 			Students2[i] = new IT();
 		}
+		Arrays.sort(Students2, new sorter());
 		Arrays.sort(Students1, new sorter());
 		System.out.println("Comps Students: ");
 		for(int i = 0; i<c; i++)
@@ -104,7 +104,6 @@ public class Tester1{
 			Students1[i].studentDetails();
 			System.out.println();
 		}
-		Arrays.sort(Students1, new sorter());
 		System.out.println("IT Students: ");
 		for(int i = 0; i<it; i++)
 		{
