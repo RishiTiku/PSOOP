@@ -8,7 +8,7 @@ class Cricketer{
     int runs;
     int innings;
     int not_out;
-    int batting_avg;
+    double batting_avg;
     Cricketer()
     {
         Scanner sc = new Scanner(System.in);
@@ -51,23 +51,40 @@ class Cricketer{
             sc.nextLine();
         }while(true);
         try{
-            batting_avg = runs/innings;
+            batting_avg = (double) runs/innings;
         }
         catch(ArithmeticException e)
         {
             batting_avg = 0;
         }
     }
-    public int get_avg(){return batting_avg;}
-    public void display(){}
+    public double get_avg(){return batting_avg;}
+    public void display(){
+    	System.out.println("Name: "+name);
+    	System.out.println("Runs: "+runs);
+    	System.out.println("Innings: "+innings);
+    	System.out.println("Not Outs: "+not_out);
+    	System.out.println("Batting Average: "+batting_avg);
+    	System.out.println();
+    }
 }
 
-class TeamException extends Throwable{}
+class TeamException extends Throwable{
+	double avg;
+	TeamException(double a)
+	{
+		avg = a;
+	}
+	public String toString()
+	{
+		return "Batting Avg is low: "+avg;
+	}
+}
 
 class Sortbyavg implements Comparator<Cricketer> { 
     public int compare(Cricketer a, Cricketer b) 
     { 
-        return a.get_avg() - b.get_avg(); 
+        return (int) (a.get_avg() - b.get_avg()); 
     } 
 } 
   
@@ -90,11 +107,16 @@ public class tester {
             sc.nextLine();
         }while(true);
         Cricketer A[] = new Cricketer[n];
+        double sum = 0;
         for(int i = 0; i<n; i++)
         {
             A[i] = new Cricketer();
+            sum+= A[i].get_avg();
         }
         Arrays.sort(A, new Sortbyavg());
+        double tavg = (double) sum/n;
+        if(tavg<= 20)
+        	throw new TeamException(tavg);
         for(int i = 0; i<n; i++)
         {
             A[i].display();
