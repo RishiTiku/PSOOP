@@ -1,6 +1,8 @@
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import javax.lang.model.util.ElementScanner14;
+
 public class tester {
     public static void main(String[] args) throws DoseException, NegativeDaysException    
     {
@@ -22,6 +24,9 @@ public class tester {
             throw new NegativeDaysException();
         else if (days>100||(days<84&&days>=1))
             throw new DoseException();
+        else{
+            System.out.println("You're on time for Vaccination");
+        }
     }
 }
 class DoseException extends Throwable{}
